@@ -14,10 +14,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="device in devices">
-                <td>{{ highCPU_device.ip}}</td>
-                <td>{{ highCPU_device.owner}}</td>
-                <td>{{ highCPU_device.cpuPct}}%</td>
+            <tr ng-repeat="device in highCPU_devices">
+                <td>{{ device.ip}}</td>
+                <td>{{ device.owner}}</td>
+                <td>{{ device.cpuPct}}%</td>
             </tr>
             <tr ng-show="!highCPU_devices.length">
                 <td colspan="6">No device info available</td>
@@ -38,7 +38,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="device in devices">
+            <tr ng-repeat="device in highMEM_devices">
                 <td>{{ device.ip}}</td>
                 <td>{{ device.owner}}</td>
                 <td>{{ device.memBytes | bytesToStr }}</td>
@@ -64,7 +64,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="device in devices">
+            <tr ng-repeat="device in highTX_devices">
                 <td>{{ device.ip}}</td>
                 <td>{{ device.owner}}</td>
                 <td>{{ device.networkTxBytes | bytesToStr }}</td>
@@ -88,7 +88,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="device in devices">
+            <tr ng-repeat="device in highRX_devices">
                 <td>{{ device.ip}}</td>
                 <td>{{ device.owner}}</td>
                 <td>{{ device.networkRxBytes | bytesToStr }}</td>
