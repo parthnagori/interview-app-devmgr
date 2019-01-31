@@ -7,11 +7,15 @@ angular.module('dashboard', ['resources.devices', 'filters.formatting'])
     resolve:{
       devices: ['Devices', function (Devices) {
         return Devices.all();
+      }],
+      highCPU_devices: ['Devices', function (Devices) {
+        return Devices.sortByKey('cpuPct'); 
       }]
     }
   });
 }])
 
-.controller('DashboardCtrl', ['$scope', '$location', 'devices', function ($scope, $location, devices) {
+.controller('DashboardCtrl', ['$scope', '$location', 'devices', 'highCPU_devices', function ($scope, $location, devices, highCPU_devices) {
   $scope.devices = devices;
+  $scope.highCPU_devices = highCPU_devices;
 }]);
