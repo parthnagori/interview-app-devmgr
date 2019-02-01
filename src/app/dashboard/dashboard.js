@@ -12,6 +12,7 @@ angular.module('dashboard', ['resources.devices', 'filters.formatting'])
   });
 }])
 
+// Top 5 devices by highest usage statistics added to scope
 .controller('DashboardCtrl', ['$scope', '$filter', '$location', 'devices', function ($scope, $filter, $location, devices) {
   $scope.devices = devices;
   $scope.highCPU_devices = $filter('orderBy')($scope.devices, '-cpuPct').slice(0,5);

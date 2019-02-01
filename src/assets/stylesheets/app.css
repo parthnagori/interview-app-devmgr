@@ -5,13 +5,10 @@
   text-align: right;
 }
 
-.inline-table {
-  display: inline-block;
-  width: 24%;
-  float: left;
-  margin: 0.5%;
+.padding-left-zero {
+  padding-left: 0 !important;
 }
 
-.clear-left {
-  clear: left;
+.padding-right-zero {
+  padding-right: 0 !important;
 }
