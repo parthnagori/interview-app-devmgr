@@ -1,106 +1,21 @@
 <h4>High Usage Devices</h4>
 <div>
     <div class="col-md-12 col-lg-6 col-xs-12 padding-left-zero">
-        <table class="table table-bordered table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th class="col-md-6 text-center" colspan="3">CPU Usage</th>
-            </tr>
-            <tr>
-                <th class="col-md-2">IP</th>
-                <th class="col-md-2">Owner</th>
-                <th class="col-md-2">CPU</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="device in highCPU_devices">
-                <td>{{ device.ip}}</td>
-                <td>{{ device.owner}}</td>
-                <td>{{ device.cpuPct}}%</td>
-            </tr>
-            <tr ng-show="!highCPU_devices.length">
-                <td colspan="6">No device info available</td>
-            </tr>
-            </tbody>
-        </table>
+        <top-devices usage-column="cpuPct" column-name="CPU" top-devices="devices"></top-devices>
     </div>
     <div class="col-md-12 col-lg-6 col-xs-12 padding-right-zero">
-        <table class="table table-bordered table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th class="col-md-6 text-center" colspan="3">Memory Usage</th>
-            </tr>
-            <tr>
-                <th class="col-md-2">IP</th>
-                <th class="col-md-2">Owner</th>
-                <th class="col-md-2">Mem</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="device in highMEM_devices">
-                <td>{{ device.ip}}</td>
-                <td>{{ device.owner}}</td>
-                <td>{{ device.memBytes | bytesToStr }}</td>
-            </tr>
-            <tr ng-show="!devices.length">
-                <td colspan="6">No device info available</td>
-            </tr>
-            </tbody>
-        </table>
+        <top-devices usage-column="memBytes" column-name="Mem" top-devices="devices"></top-devices>
     </div>
 </div>
 <div>
     <div class="col-md-12 col-lg-6 col-xs-12 padding-left-zero">
-        <table class="table table-bordered table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th class="col-md-6 text-center" colspan="3">TX Usage</th>
-            </tr>
-            <tr>
-                <th class="col-md-2">IP</th>
-                <th class="col-md-2">Owner</th>
-                <th class="col-md-2">TX</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="device in highTX_devices">
-                <td>{{ device.ip}}</td>
-                <td>{{ device.owner}}</td>
-                <td>{{ device.networkTxBytes | bytesToStr }}</td>
-            </tr>
-            <tr ng-show="!devices.length">
-                <td colspan="6">No device info available</td>
-            </tr>
-            </tbody>
-        </table>
+        <top-devices usage-column="networkTxBytes" column-name="TX" top-devices="devices"></top-devices>
     </div>
-    <div class="col-md-12 col-lg-6 col-xs-12 padding-right-zero"> 
-        <table class="table table-bordered table-condensed table-striped table-hover">
-            <thead>
-            <tr>
-                <th class="col-md-6 text-center" colspan="3">RX Usage</th>
-            </tr>
-            <tr>
-                <th class="col-md-2">IP</th>
-                <th class="col-md-2">Owner</th>
-                <th class="col-md-2">RX</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="device in highRX_devices">
-                <td>{{ device.ip}}</td>
-                <td>{{ device.owner}}</td>
-                <td>{{ device.networkRxBytes | bytesToStr }}</td>
-            </tr>
-            <tr ng-show="!devices.length">
-                <td colspan="6">No device info available</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="col-md-12 col-lg-6 col-xs-12 padding-right-zero">
+        <top-devices usage-column="networkRxBytes" column-name="RX" top-devices="devices"></top-devices>
     </div>
-<div>
-
-
+</div>
+    
 <h4 class="clear-left">Devices</h4>
 <table class="table table-bordered table-condensed table-striped table-hover">
     <thead>

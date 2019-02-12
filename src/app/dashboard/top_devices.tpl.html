@@ -1,0 +1,23 @@
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <thead>
+    <tr>
+        <th class="col-md-6 text-center" colspan="3">{{columnName}} Usage</th>
+    </tr>
+    <tr>
+        <th class="col-md-2">IP</th>
+        <th class="col-md-2">Owner</th>
+        <th class="col-md-2">{{columnName}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="device in top_devices | limitTo:device_count">
+        <td>{{ device.ip}}</td>
+        <td>{{ device.owner}}</td>
+        <td ng-if="columnName == 'CPU'">{{ device[usageColumn]}}%</td>
+        <td ng-if="usageColumn.indexOf('Bytes') != -1">{{ device[usageColumn] | bytesToStr }}</td>
+    </tr>
+    <tr ng-show="!top_devices.length">
+        <td colspan="6">No device info available</td>
+    </tr>
+    </tbody>
+</table>

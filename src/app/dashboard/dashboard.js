@@ -15,8 +15,19 @@ angular.module('dashboard', ['resources.devices', 'filters.formatting'])
 // Top 5 devices by highest usage statistics added to scope
 .controller('DashboardCtrl', ['$scope', '$filter', '$location', 'devices', function ($scope, $filter, $location, devices) {
   $scope.devices = devices;
-  $scope.highCPU_devices = $filter('orderBy')($scope.devices, '-cpuPct').slice(0,5);
-  $scope.highMEM_devices = $filter('orderBy')($scope.devices, '-memBytes').slice(0,5);
-  $scope.highRX_devices = $filter('orderBy')($scope.devices, '-networkRxBytes').slice(0,5);
-  $scope.highTX_devices = $filter('orderBy')($scope.devices, '-networkTxBytes').slice(0,5);
-}]);
+}])
+
+.directive('topDevices', function ($filter) {
+  return {
+    templateUrl: "app/dashboard/top_devices.tpl.html",
+    scope: {
+      usageColumn: '@usageColumn',
+      topDevices: '=',
+      columnName: '@columnName' 
+    },
+    link: function(scope){
+      scope.top_devices = $filter('orderBy')(scope.topDevices, '-'+scope.usageColumn);
+      scope.device_count = 5;
+    }
+  }
+});
