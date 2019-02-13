@@ -12,11 +12,12 @@ angular.module('dashboard', ['resources.devices', 'filters.formatting'])
   });
 }])
 
-// Top 5 devices by highest usage statistics added to scope
+
 .controller('DashboardCtrl', ['$scope', '$filter', '$location', 'devices', function ($scope, $filter, $location, devices) {
   $scope.devices = devices;
 }])
 
+// Custom directive to get devices ordered by the usage column specified in the template
 .directive('topDevices', function ($filter) {
   return {
     templateUrl: "app/dashboard/top_devices.tpl.html",
